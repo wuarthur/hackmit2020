@@ -11,9 +11,11 @@ def fill_pos():
                 x = line[0].replace('(', '').strip()
                 y = line[1].replace(')', '').strip()
                 #todo might be y, x instead
-                x, y = int(x), int(y)
+                x, y = 68 - int(x), int(y)
                 positions.append((x,y,i))
-                i+=1
+                if i == 3591:
+                    print(x, y)
+            i+=1
     print(max(positions, key=lambda x:x[0]))
     print(max(positions, key=lambda x:x[1]))
     return positions
@@ -22,6 +24,8 @@ def fill_pos():
 def merge_row(row):
     output = None
     for num in row:
+        if num == 3591:
+            print('hi')
         image_name = 'images/%s.png' % int(num)
         img = cv2.imread(image_name)
 
@@ -41,18 +45,16 @@ def merge(mat):
             final = np.concatenate((final, row_img), axis=0)
     return final
 
-mat = np.zeros(shape=(68,68))
+mat = np.zeros(shape=(69,69))
 positions = fill_pos()
 
 for i in range(len(positions)):
-    y, x, line_num =  positions[i]
-    mat[y-1][x-1] = line_num
+    x, y, line_num =  positions[i]
+    mat[x][y] = line_num
 
 final = merge(mat)
 
 cv2.imwrite('test.png', final)
-
-
 
 
 
