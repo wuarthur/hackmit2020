@@ -13,8 +13,6 @@ def fill_pos():
                 #todo might be y, x instead
                 x, y = 68 - int(x), int(y)
                 positions.append((x,y,i))
-                if i == 3591:
-                    print(x, y)
             i+=1
     print(max(positions, key=lambda x:x[0]))
     print(max(positions, key=lambda x:x[1]))
@@ -24,8 +22,6 @@ def fill_pos():
 def merge_row(row):
     output = None
     for num in row:
-        if num == 3591:
-            print('hi')
         image_name = 'images/%s.png' % int(num)
         img = cv2.imread(image_name)
 
