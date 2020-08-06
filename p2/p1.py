@@ -1,6 +1,9 @@
 import cv2
 import numpy as np
 
+images_to_filter = 'images_to_filter.txt'
+f = open(images_to_filter, "w")
+
 def fill_pos():
     positions = []
     with open('assignment.txt') as fin:
@@ -13,8 +16,8 @@ def fill_pos():
                 #todo might be y, x instead
                 x, y = 68 - int(x), int(y)
                 positions.append((x,y,i))
-                if i == 3591:
-                    print(x, y)
+                f = open(images_to_filter, "a")
+                f.write(str(i) + '.png\n')
             i+=1
     print(max(positions, key=lambda x:x[0]))
     print(max(positions, key=lambda x:x[1]))
