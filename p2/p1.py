@@ -24,8 +24,6 @@ def fill_pos():
 def merge_row(row):
     output = None
     for num in row:
-        if num == 3591:
-            print('hi')
         image_name = 'images/%s.png' % int(num)
         img = cv2.imread(image_name)
 
