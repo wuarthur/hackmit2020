@@ -27,7 +27,7 @@ def fill_pos():
 def merge_row(row):
     output = None
     for num in row:
-        image_name = 'images/%s.png' % int(num)
+        image_name = 'images_classified/%s.png' % int(num)
         img = cv2.imread(image_name)
 
         if output is not None:
